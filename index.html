@@ -374,12 +374,43 @@
  defer>
 </script>
 <style>
+  /* バブルボタンの色（ブランドカラーに統一） */
   #dify-chatbot-bubble-button {
     background-color: #0EA5E9 !important;
   }
+
+  /* デスクトップ用の標準サイズ */
   #dify-chatbot-bubble-window {
     width: 24rem !important;
     height: 40rem !important;
+  }
+
+  /* ─────────────────────────────────────────
+     スマホ最適化（タブレット縦・スマホ）
+     拡大ボタン押下時のはみ出しも強制的に防止
+     ───────────────────────────────────────── */
+  @media (max-width: 640px) {
+    /* バブルボタンを少し小さく＆右下に配置 */
+    #dify-chatbot-bubble-button {
+      width: 3.25rem !important;
+      height: 3.25rem !important;
+      right: 1rem !important;
+      bottom: 1rem !important;
+    }
+
+    /* チャット窓は画面内に必ず収まるよう強制制御 */
+    #dify-chatbot-bubble-window {
+      position: fixed !important;
+      top: auto !important;
+      left: 0.5rem !important;
+      right: 0.5rem !important;
+      bottom: 5rem !important;
+      width: calc(100vw - 1rem) !important;
+      height: calc(100vh - 6rem) !important;
+      max-width: calc(100vw - 1rem) !important;
+      max-height: calc(100vh - 6rem) !important;
+      border-radius: 1rem !important;
+    }
   }
 </style>
 
