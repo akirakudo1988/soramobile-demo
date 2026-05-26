@@ -7,6 +7,11 @@
 <script src="https://cdn.tailwindcss.com"></script>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
 <style>
+  /* 横スクロール完全禁止（LPは縦スクロールのみ想定） */
+  html, body {
+    overflow-x: hidden !important;
+    max-width: 100%;
+  }
   body { font-family: 'Noto Sans JP', sans-serif; }
   .hero-gradient { background: linear-gradient(135deg, #0EA5E9 0%, #0284C7 50%, #0369A1 100%); }
   .plan-card { transition: transform 0.2s, box-shadow 0.2s; }
@@ -439,7 +444,7 @@
       position: fixed !important;
       top: auto !important;
       left: 0.5rem !important;
-      right: 0.5rem !important;
+      right: auto !important;
       bottom: 5.5rem !important;
       width: calc(100vw - 1rem) !important;
       height: calc(100dvh - 6.5rem) !important;
