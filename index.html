@@ -373,6 +373,39 @@
  id="v6XOmYSlnxFD8T2E"
  defer>
 </script>
+<script>
+  /* スマホ用：iframe 内の「拡大」ボタンを透明 div でタップブロック */
+  (function () {
+    function init() {
+      const iframe = document.getElementById('dify-chatbot-bubble-window');
+      if (!iframe) return false;
+
+      const blocker = document.createElement('div');
+      blocker.id = 'dify-expand-blocker';
+      document.body.appendChild(blocker);
+
+      function update() {
+        const isMobile = window.innerWidth <= 640;
+        const visible = isMobile && getComputedStyle(iframe).display !== 'none';
+        if (!visible) { blocker.style.display = 'none'; return; }
+        const r = iframe.getBoundingClientRect();
+        blocker.style.display = 'block';
+        blocker.style.top = r.top + 'px';
+        blocker.style.left = (r.right - 48) + 'px';
+      }
+
+      new MutationObserver(update).observe(iframe, { attributes: true, attributeFilter: ['style'] });
+      window.addEventListener('resize', update);
+      window.addEventListener('scroll', update, { passive: true });
+      update();
+      return true;
+    }
+    let tries = 0;
+    const timer = setInterval(() => {
+      if (init() || ++tries > 40) clearInterval(timer);
+    }, 250);
+  })();
+</script>
 <style>
   /* バブルボタンの色（ブランドカラーに統一） */
   #dify-chatbot-bubble-button {
@@ -387,7 +420,7 @@
 
   /* ─────────────────────────────────────────
      スマホ最適化（タブレット縦・スマホ）
-     拡大ボタン押下時のはみ出しも強制的に防止
+     iOS Safari の URL バー動的伸縮にも対応
      ───────────────────────────────────────── */
   @media (max-width: 640px) {
     /* バブルボタンを少し小さく＆右下に配置 */
@@ -398,7 +431,8 @@
       bottom: 1rem !important;
     }
 
-    /* チャット窓は画面内に必ず収まるよう強制制御 */
+    /* チャット窓は画面内に必ず収まるよう強制制御
+       100dvh = iOS Safari の URL バー考慮済み可視ビューポート */
     #dify-chatbot-bubble-window {
       position: fixed !important;
       top: auto !important;
@@ -406,11 +440,32 @@
       right: 0.5rem !important;
       bottom: 5rem !important;
       width: calc(100vw - 1rem) !important;
-      height: calc(100vh - 6rem) !important;
+      height: calc(100dvh - 6rem) !important;
       max-width: calc(100vw - 1rem) !important;
-      max-height: calc(100vh - 6rem) !important;
+      max-height: calc(100dvh - 6rem) !important;
       border-radius: 1rem !important;
     }
+  }
+
+  /* dvh 非対応ブラウザ用フォールバック */
+  @supports not (height: 100dvh) {
+    @media (max-width: 640px) {
+      #dify-chatbot-bubble-window {
+        height: calc(100vh - 10rem) !important;
+        max-height: calc(100vh - 10rem) !important;
+      }
+    }
+  }
+
+  /* スマホで拡大ボタンを覆い隠す透明ブロッカー */
+  #dify-expand-blocker {
+    position: fixed;
+    width: 48px;
+    height: 48px;
+    z-index: 2147483646;
+    background: transparent;
+    display: none;
+    cursor: default;
   }
 </style>
 
