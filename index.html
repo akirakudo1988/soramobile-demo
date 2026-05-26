@@ -386,14 +386,7 @@
   window.difyChatbotConfig = {
     token: 'v6XOmYSlnxFD8T2E',
     inputs: {},
-    /* conversation_id を毎回ランダム生成 → 必ず新規会話で起動 */
-    systemVariables: {
-      conversation_id: (crypto && crypto.randomUUID) ? crypto.randomUUID()
-        : 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
-          const r = Math.random() * 16 | 0;
-          return (c === 'x' ? r : (r & 0x3 | 0x8)).toString(16);
-        }),
-    },
+    systemVariables: {},
     userVariables: {},
   };
 </script>
@@ -403,24 +396,27 @@
  defer>
 </script>
 <script>
-  /* スマホ用：iframe 内の「拡大」ボタンを透明 div でタップブロック */
+  /* スマホ用：iframe ヘッダー（拡大ボタン含む）を独自ヘッダーで完全置換 */
   (function () {
     function init() {
       const iframe = document.getElementById('dify-chatbot-bubble-window');
       if (!iframe) return false;
 
-      const blocker = document.createElement('div');
-      blocker.id = 'dify-expand-blocker';
-      document.body.appendChild(blocker);
+      const header = document.createElement('div');
+      header.id = 'dify-custom-header';
+      header.innerHTML = '<span class="title">📱 そらサポ</span>';
+      document.body.appendChild(header);
 
       function update() {
         const isMobile = window.innerWidth <= 640;
         const visible = isMobile && getComputedStyle(iframe).display !== 'none';
-        if (!visible) { blocker.style.display = 'none'; return; }
+        if (!visible) { header.style.display = 'none'; return; }
         const r = iframe.getBoundingClientRect();
-        blocker.style.display = 'block';
-        blocker.style.top = r.top + 'px';
-        blocker.style.left = (r.right - 100) + 'px';
+        header.style.display = 'flex';
+        header.style.top = r.top + 'px';
+        header.style.left = r.left + 'px';
+        header.style.width = r.width + 'px';
+        header.style.height = '52px';
       }
 
       new MutationObserver(update).observe(iframe, { attributes: true, attributeFilter: ['style'] });
@@ -488,19 +484,26 @@
     }
   }
 
-  /* スマホで拡大ボタンを視覚的にも完全カバー
-     iframe ヘッダーの青系グラデに近い色で塗りつぶし
-     幅を広めに取って expand ボタンの位置ズレに耐える */
-  #dify-expand-blocker {
+  /* スマホで Dify ヘッダー全体を独自ヘッダーで置換
+     拡大ボタンも含めて完全に「無かったこと」にする */
+  #dify-custom-header {
     position: fixed;
-    width: 100px;
-    height: 60px;
     z-index: 2147483646;
-    background: linear-gradient(135deg, #5B8DEF 0%, #3F6BE0 100%);
     display: none;
-    cursor: default;
+    align-items: center;
+    padding: 0 1.25rem;
+    color: white;
+    font-weight: 700;
+    font-size: 1rem;
+    border-top-left-radius: 1rem;
     border-top-right-radius: 1rem;
+    background: linear-gradient(135deg, #0EA5E9 0%, #0284C7 100%);
+    font-family: 'Noto Sans JP', sans-serif;
+    box-sizing: border-box;
+    user-select: none;
+    pointer-events: auto;
   }
+  #dify-custom-header .title { display: flex; align-items: center; gap: 0.5rem; }
 </style>
 
 </body>
