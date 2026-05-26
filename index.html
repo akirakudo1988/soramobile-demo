@@ -383,10 +383,22 @@
   /* 念のためsessionStorageも */
   try { sessionStorage.clear(); } catch (e) {}
 
+  /* 毎回ランダムな user_id を生成
+     → Dify 側で「別の匿名ユーザー」と認識され、過去会話を引き継がない
+     conversation_id は指定しない（指定すると存在チェックでエラーになる） */
+  const _genUUID = () => (crypto && crypto.randomUUID)
+    ? crypto.randomUUID()
+    : 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
+        const r = Math.random() * 16 | 0;
+        return (c === 'x' ? r : (r & 0x3 | 0x8)).toString(16);
+      });
+
   window.difyChatbotConfig = {
     token: 'v6XOmYSlnxFD8T2E',
     inputs: {},
-    systemVariables: {},
+    systemVariables: {
+      user_id: 'guest-' + _genUUID(),
+    },
     userVariables: {},
   };
 </script>
