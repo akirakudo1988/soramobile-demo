@@ -391,7 +391,7 @@
         const r = iframe.getBoundingClientRect();
         blocker.style.display = 'block';
         blocker.style.top = r.top + 'px';
-        blocker.style.left = (r.right - 48) + 'px';
+        blocker.style.left = (r.right - 56) + 'px';
       }
 
       new MutationObserver(update).observe(iframe, { attributes: true, attributeFilter: ['style'] });
@@ -423,12 +423,14 @@
      iOS Safari の URL バー動的伸縮にも対応
      ───────────────────────────────────────── */
   @media (max-width: 640px) {
-    /* バブルボタンを少し小さく＆右下に配置 */
+    /* バブル / 閉じるボタンを大きく＆視認性UP（白縁＋濃い影） */
     #dify-chatbot-bubble-button {
-      width: 3.25rem !important;
-      height: 3.25rem !important;
+      width: 3.75rem !important;
+      height: 3.75rem !important;
       right: 1rem !important;
       bottom: 1rem !important;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35) !important;
+      border: 3px solid white !important;
     }
 
     /* チャット窓は画面内に必ず収まるよう強制制御
@@ -438,11 +440,11 @@
       top: auto !important;
       left: 0.5rem !important;
       right: 0.5rem !important;
-      bottom: 5rem !important;
+      bottom: 5.5rem !important;
       width: calc(100vw - 1rem) !important;
-      height: calc(100dvh - 6rem) !important;
+      height: calc(100dvh - 6.5rem) !important;
       max-width: calc(100vw - 1rem) !important;
-      max-height: calc(100dvh - 6rem) !important;
+      max-height: calc(100dvh - 6.5rem) !important;
       border-radius: 1rem !important;
     }
   }
@@ -457,15 +459,17 @@
     }
   }
 
-  /* スマホで拡大ボタンを覆い隠す透明ブロッカー */
+  /* スマホで拡大ボタンを視覚的にも完全カバー
+     iframe ヘッダーの青系グラデに近い色で塗りつぶし */
   #dify-expand-blocker {
     position: fixed;
-    width: 48px;
-    height: 48px;
+    width: 56px;
+    height: 56px;
     z-index: 2147483646;
-    background: transparent;
+    background: linear-gradient(135deg, #5B8DEF 0%, #3F6BE0 100%);
     display: none;
     cursor: default;
+    border-top-right-radius: 1rem;
   }
 </style>
 
