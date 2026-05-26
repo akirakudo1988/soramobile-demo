@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>そらモバイル｜スマホ料金、もう悩まない。</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  body { font-family: 'Noto Sans JP', sans-serif; }
+  .hero-gradient { background: linear-gradient(135deg, #0EA5E9 0%, #0284C7 50%, #0369A1 100%); }
+  .plan-card { transition: transform 0.2s, box-shadow 0.2s; }
+  .plan-card:hover { transform: translateY(-4px); box-shadow: 0 20px 40px -10px rgba(14, 165, 233, 0.3); }
+  .feature-icon { background: linear-gradient(135deg, #0EA5E9, #0284C7); }
+  .blob {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.3;
+    pointer-events: none;
+  }
+</style>
+</head>
+<body class="bg-white text-slate-800">
+
+<!-- Header -->
+<header class="fixed top-0 left-0 right-0 bg-white/90 backdrop-blur-sm z-40 border-b border-slate-100">
+  <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+    <div class="flex items-center gap-2">
+      <div class="text-3xl">📱</div>
+      <div class="text-xl font-bold text-sky-600">そらモバイル</div>
+    </div>
+    <nav class="hidden md:flex items-center gap-8 text-sm">
+      <a href="#plans" class="hover:text-sky-600">料金プラン</a>
+      <a href="#features" class="hover:text-sky-600">特徴</a>
+      <a href="#steps" class="hover:text-sky-600">申込の流れ</a>
+      <a href="#faq" class="hover:text-sky-600">よくある質問</a>
+    </nav>
+    <a href="#cta" class="bg-orange-500 hover:bg-orange-600 text-white px-5 py-2.5 rounded-full text-sm font-bold transition">
+      お申込み
+    </a>
+  </div>
+</header>
+
+<!-- Hero -->
+<section class="hero-gradient text-white pt-32 pb-24 relative overflow-hidden">
+  <div class="blob bg-yellow-300 w-96 h-96 top-10 right-10"></div>
+  <div class="blob bg-pink-400 w-80 h-80 bottom-0 left-20"></div>
+  <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center relative z-10">
+    <div>
+      <div class="inline-block bg-white/20 backdrop-blur px-4 py-1.5 rounded-full text-xs font-bold mb-6">
+        🎉 新規契約キャンペーン実施中
+      </div>
+      <h1 class="text-4xl md:text-6xl font-black mb-6 leading-tight">
+        スマホ料金、<br>もう悩まない。
+      </h1>
+      <p class="text-lg md:text-xl mb-8 text-white/90 leading-relaxed">
+        音声SIM月額990円〜。<br>
+        eSIM即日開通、安心の電話サポート付き。<br>
+        はじめての格安SIMでも、迷わず使える。
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4">
+        <a href="#cta" class="bg-orange-500 hover:bg-orange-600 text-white px-8 py-4 rounded-full font-bold text-center transition shadow-lg">
+          いますぐ申込む →
+        </a>
+        <a href="#plans" class="bg-white/10 hover:bg-white/20 backdrop-blur text-white px-8 py-4 rounded-full font-bold text-center transition border border-white/30">
+          料金プランを見る
+        </a>
+      </div>
+      <div class="flex items-center gap-6 mt-8 text-sm text-white/80">
+        <div class="flex items-center gap-2"><span>✅</span> 違約金ゼロ</div>
+        <div class="flex items-center gap-2"><span>✅</span> 最短10分開通</div>
+        <div class="flex items-center gap-2"><span>✅</span> 5G対応</div>
+      </div>
+    </div>
+    <div class="hidden md:flex justify-center">
+      <div class="text-[280px] drop-shadow-2xl">📱</div>
+    </div>
+  </div>
+</section>
+
+<!-- Trust bar -->
+<section class="bg-slate-50 py-8">
+  <div class="max-w-6xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+    <div>
+      <div class="text-3xl font-black text-sky-600">990<span class="text-base">円〜</span></div>
+      <div class="text-xs text-slate-500 mt-1">業界水準の低価格</div>
+    </div>
+    <div>
+      <div class="text-3xl font-black text-sky-600">100<span class="text-base">万人</span></div>
+      <div class="text-xs text-slate-500 mt-1">累計契約者数</div>
+    </div>
+    <div>
+      <div class="text-3xl font-black text-sky-600">10<span class="text-base">分</span></div>
+      <div class="text-xs text-slate-500 mt-1">eSIM最短開通</div>
+    </div>
+    <div>
+      <div class="text-3xl font-black text-sky-600">24<span class="text-base">時間</span></div>
+      <div class="text-xs text-slate-500 mt-1">AIサポート対応</div>
+    </div>
+  </div>
+</section>
+
+<!-- Plans -->
+<section id="plans" class="py-24 px-6">
+  <div class="max-w-6xl mx-auto">
+    <div class="text-center mb-16">
+      <div class="text-sky-600 font-bold text-sm mb-3">PLANS</div>
+      <h2 class="text-3xl md:text-4xl font-black mb-4">あなたにぴったりの料金プラン</h2>
+      <p class="text-slate-600">使い方に合わせて、3つのSIMタイプから選べます。</p>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-6">
+      <!-- 音声SIM -->
+      <div class="plan-card bg-white border-2 border-slate-200 rounded-3xl p-8 relative">
+        <div class="text-sm font-bold text-sky-600 mb-2">音声SIM</div>
+        <div class="text-lg font-bold mb-4">通話＋データ通信</div>
+        <div class="mb-6">
+          <span class="text-5xl font-black">990</span>
+          <span class="text-slate-500 ml-1">円〜/月</span>
+        </div>
+        <ul class="space-y-3 text-sm mb-8">
+          <li class="flex items-start gap-2"><span class="text-sky-500">✓</span><span>3GB / 990円</span></li>
+          <li class="flex items-start gap-2"><span class="text-sky-500">✓</span><span>10GB / 1,490円</span></li>
+          <li class="flex items-start gap-2"><span class="text-sky-500">✓</span><span>20GB / 2,090円</span></li>
+          <li class="flex items-start gap-2"><span class="text-sky-500">✓</span><span>かけ放題オプションあり</span></li>
+        </ul>
+        <button class="w-full bg-white border-2 border-sky-500 text-sky-600 hover:bg-sky-50 py-3 rounded-full font-bold transition">
+          プラン詳細 →
+        </button>
+      </div>
+
+      <!-- データSIM -->
+      <div class="plan-card bg-gradient-to-br from-sky-500 to-sky-700 text-white rounded-3xl p-8 relative shadow-2xl scale-105">
+        <div class="absolute -top-3 left-1/2 -translate-x-1/2 bg-orange-500 text-white text-xs font-bold px-4 py-1 rounded-full">
+          一番人気
+        </div>
+        <div class="text-sm font-bold mb-2 opacity-80">データSIM</div>
+        <div class="text-lg font-bold mb-4">データ通信のみ</div>
+        <div class="mb-6">
+          <span class="text-5xl font-black">590</span>
+          <span class="opacity-80 ml-1">円〜/月</span>
+        </div>
+        <ul class="space-y-3 text-sm mb-8">
+          <li class="flex items-start gap-2"><span>✓</span><span>3GB / 590円</span></li>
+          <li class="flex items-start gap-2"><span>✓</span><span>10GB / 990円</span></li>
+          <li class="flex items-start gap-2"><span>✓</span><span>20GB / 1,590円</span></li>
+          <li class="flex items-start gap-2"><span>✓</span><span>テザリング無料</span></li>
+        </ul>
+        <button class="w-full bg-white text-sky-600 hover:bg-slate-100 py-3 rounded-full font-bold transition">
+          プラン詳細 →
+        </button>
+      </div>
+
+      <!-- eSIM -->
+      <div class="plan-card bg-white border-2 border-slate-200 rounded-3xl p-8 relative">
+        <div class="text-sm font-bold text-purple-600 mb-2">eSIM</div>
+        <div class="text-lg font-bold mb-4">最短10分で開通</div>
+        <div class="mb-6">
+          <span class="text-5xl font-black">990</span>
+          <span class="text-slate-500 ml-1">円〜/月</span>
+        </div>
+        <ul class="space-y-3 text-sm mb-8">
+          <li class="flex items-start gap-2"><span class="text-purple-500">✓</span><span>物理SIMと同価格</span></li>
+          <li class="flex items-start gap-2"><span class="text-purple-500">✓</span><span>iPhone XS以降対応</span></li>
+          <li class="flex items-start gap-2"><span class="text-purple-500">✓</span><span>2回線目に最適</span></li>
+          <li class="flex items-start gap-2"><span class="text-purple-500">✓</span><span>海外利用も簡単</span></li>
+        </ul>
+        <button class="w-full bg-white border-2 border-purple-500 text-purple-600 hover:bg-purple-50 py-3 rounded-full font-bold transition">
+          プラン詳細 →
+        </button>
+      </div>
+    </div>
+
+    <div class="text-center mt-12 text-sm text-slate-500">
+      ※価格は税込。シェアプラン・キャンペーン情報は<a href="#" class="text-sky-600 underline">こちら</a>
+    </div>
+  </div>
+</section>
+
+<!-- Features -->
+<section id="features" class="py-24 px-6 bg-slate-50">
+  <div class="max-w-6xl mx-auto">
+    <div class="text-center mb-16">
+      <div class="text-sky-600 font-bold text-sm mb-3">FEATURES</div>
+      <h2 class="text-3xl md:text-4xl font-black mb-4">そらモバイルが選ばれる理由</h2>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-6">
+      <div class="bg-white p-8 rounded-2xl">
+        <div class="feature-icon w-14 h-14 rounded-2xl flex items-center justify-center text-2xl text-white mb-4">⚡</div>
+        <h3 class="font-bold text-lg mb-2">eSIM即日開通</h3>
+        <p class="text-sm text-slate-600 leading-relaxed">申込から最短10分で利用開始。SIMカードの到着を待つ必要がありません。</p>
+      </div>
+      <div class="bg-white p-8 rounded-2xl">
+        <div class="feature-icon w-14 h-14 rounded-2xl flex items-center justify-center text-2xl text-white mb-4">🔄</div>
+        <h3 class="font-bold text-lg mb-2">MNPワンストップ</h3>
+        <p class="text-sm text-slate-600 leading-relaxed">予約番号取得不要。今のキャリアからそのままお乗り換えいただけます。</p>
+      </div>
+      <div class="bg-white p-8 rounded-2xl">
+        <div class="feature-icon w-14 h-14 rounded-2xl flex items-center justify-center text-2xl text-white mb-4">📞</div>
+        <h3 class="font-bold text-lg mb-2">電話サポートあり</h3>
+        <p class="text-sm text-slate-600 leading-relaxed">チャット・LINE・電話の3チャネル対応。困った時はいつでもご相談ください。</p>
+      </div>
+      <div class="bg-white p-8 rounded-2xl">
+        <div class="feature-icon w-14 h-14 rounded-2xl flex items-center justify-center text-2xl text-white mb-4">🎁</div>
+        <h3 class="font-bold text-lg mb-2">違約金ゼロ</h3>
+        <p class="text-sm text-slate-600 leading-relaxed">最低利用期間なし。いつでも気兼ねなく解約・プラン変更できます。</p>
+      </div>
+      <div class="bg-white p-8 rounded-2xl">
+        <div class="feature-icon w-14 h-14 rounded-2xl flex items-center justify-center text-2xl text-white mb-4">🌐</div>
+        <h3 class="font-bold text-lg mb-2">ドコモ＋au回線</h3>
+        <p class="text-sm text-slate-600 leading-relaxed">マルチキャリア対応。広いエリアで安定した通信品質をお届けします。</p>
+      </div>
+      <div class="bg-white p-8 rounded-2xl">
+        <div class="feature-icon w-14 h-14 rounded-2xl flex items-center justify-center text-2xl text-white mb-4">👨‍👩‍👧</div>
+        <h3 class="font-bold text-lg mb-2">シェアプラン</h3>
+        <p class="text-sm text-slate-600 leading-relaxed">1契約で最大5回線シェア。家族での乗り換えがもっとお得に。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Steps -->
+<section id="steps" class="py-24 px-6">
+  <div class="max-w-4xl mx-auto">
+    <div class="text-center mb-16">
+      <div class="text-sky-600 font-bold text-sm mb-3">STEPS</div>
+      <h2 class="text-3xl md:text-4xl font-black mb-4">申込の流れ</h2>
+      <p class="text-slate-600">かんたん3ステップで開通完了。</p>
+    </div>
+
+    <div class="space-y-6">
+      <div class="bg-white border border-slate-200 rounded-2xl p-6 flex items-center gap-6">
+        <div class="bg-sky-500 text-white w-14 h-14 rounded-full flex items-center justify-center font-black text-xl shrink-0">1</div>
+        <div>
+          <h3 class="font-bold text-lg mb-1">プラン選択・お申込み</h3>
+          <p class="text-sm text-slate-600">サイトからご希望のプランを選び、本人確認書類とお支払い情報を入力</p>
+        </div>
+      </div>
+      <div class="bg-white border border-slate-200 rounded-2xl p-6 flex items-center gap-6">
+        <div class="bg-sky-500 text-white w-14 h-14 rounded-full flex items-center justify-center font-black text-xl shrink-0">2</div>
+        <div>
+          <h3 class="font-bold text-lg mb-1">SIM受取・eSIM発行</h3>
+          <p class="text-sm text-slate-600">物理SIMは最短翌日発送。eSIMなら最短10分でQRコード発行</p>
+        </div>
+      </div>
+      <div class="bg-white border border-slate-200 rounded-2xl p-6 flex items-center gap-6">
+        <div class="bg-sky-500 text-white w-14 h-14 rounded-full flex items-center justify-center font-black text-xl shrink-0">3</div>
+        <div>
+          <h3 class="font-bold text-lg mb-1">開通・利用開始</h3>
+          <p class="text-sm text-slate-600">APN設定 or QRコード読み取りでかんたん開通。すぐにご利用いただけます</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq" class="py-24 px-6 bg-slate-50">
+  <div class="max-w-3xl mx-auto">
+    <div class="text-center mb-16">
+      <div class="text-sky-600 font-bold text-sm mb-3">FAQ</div>
+      <h2 class="text-3xl md:text-4xl font-black mb-4">よくあるご質問</h2>
+      <p class="text-slate-600">気になる質問は、右下のAIチャットでもお答えします💬</p>
+    </div>
+
+    <div class="space-y-4">
+      <details class="bg-white rounded-2xl p-6 cursor-pointer">
+        <summary class="font-bold flex items-center justify-between">
+          <span>申込にはどんなものが必要ですか？</span>
+          <span class="text-sky-500">+</span>
+        </summary>
+        <p class="mt-4 text-sm text-slate-600 leading-relaxed">本人確認書類（運転免許証・マイナンバーカード等）、支払い用のクレジットカードまたは口座振替情報、メールアドレスの3点が必要です。</p>
+      </details>
+      <details class="bg-white rounded-2xl p-6 cursor-pointer">
+        <summary class="font-bold flex items-center justify-between">
+          <span>今使っている番号をそのまま使えますか？</span>
+          <span class="text-sky-500">+</span>
+        </summary>
+        <p class="mt-4 text-sm text-slate-600 leading-relaxed">はい、MNPワンストップ対応のため、転出元での予約番号取得なしでお乗り換えいただけます。</p>
+      </details>
+      <details class="bg-white rounded-2xl p-6 cursor-pointer">
+        <summary class="font-bold flex items-center justify-between">
+          <span>解約に違約金はかかりますか？</span>
+          <span class="text-sky-500">+</span>
+        </summary>
+        <p class="mt-4 text-sm text-slate-600 leading-relaxed">違約金・最低利用期間は一切ございません。いつでも気兼ねなく解約いただけます。</p>
+      </details>
+      <details class="bg-white rounded-2xl p-6 cursor-pointer">
+        <summary class="font-bold flex items-center justify-between">
+          <span>iPhoneは使えますか？</span>
+          <span class="text-sky-500">+</span>
+        </summary>
+        <p class="mt-4 text-sm text-slate-600 leading-relaxed">iPhone 6s以降の機種で動作確認済みです。eSIMはiPhone XS以降に対応しています。</p>
+      </details>
+    </div>
+
+    <div class="text-center mt-8">
+      <a href="#" class="text-sky-600 font-bold hover:underline">→ FAQをすべて見る</a>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="cta" class="py-24 px-6 hero-gradient text-white relative overflow-hidden">
+  <div class="blob bg-yellow-300 w-96 h-96 top-0 right-0"></div>
+  <div class="max-w-4xl mx-auto text-center relative z-10">
+    <h2 class="text-3xl md:text-5xl font-black mb-6">スマホ料金、見直しませんか？</h2>
+    <p class="text-lg mb-10 text-white/90">いまなら新規契約で事務手数料0円。さらに最大3,000円分PayPay還元。</p>
+    <a href="#" class="inline-block bg-orange-500 hover:bg-orange-600 text-white px-12 py-5 rounded-full font-bold text-lg transition shadow-2xl">
+      いますぐ申込む →
+    </a>
+    <p class="text-sm mt-6 text-white/70">わからないことがあれば、右下のAIチャット💬にお気軽にどうぞ</p>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="bg-slate-900 text-slate-400 py-12 px-6">
+  <div class="max-w-6xl mx-auto">
+    <div class="grid md:grid-cols-4 gap-8 mb-8">
+      <div>
+        <div class="text-xl font-bold text-white mb-4">📱 そらモバイル</div>
+        <p class="text-xs">スマホ料金、もう悩まない。</p>
+      </div>
+      <div>
+        <div class="text-sm font-bold text-white mb-3">サービス</div>
+        <ul class="space-y-2 text-xs">
+          <li><a href="#" class="hover:text-white">料金プラン</a></li>
+          <li><a href="#" class="hover:text-white">対応端末</a></li>
+          <li><a href="#" class="hover:text-white">キャンペーン</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="text-sm font-bold text-white mb-3">サポート</div>
+        <ul class="space-y-2 text-xs">
+          <li><a href="#" class="hover:text-white">よくある質問</a></li>
+          <li><a href="#" class="hover:text-white">お問い合わせ</a></li>
+          <li><a href="#" class="hover:text-white">LINE公式</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="text-sm font-bold text-white mb-3">会社情報</div>
+        <ul class="space-y-2 text-xs">
+          <li><a href="#" class="hover:text-white">運営会社</a></li>
+          <li><a href="#" class="hover:text-white">利用規約</a></li>
+          <li><a href="#" class="hover:text-white">プライバシーポリシー</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="border-t border-slate-800 pt-6 text-xs text-center">
+      © 2026 そらモバイル株式会社（※架空のデモサイトです）
+    </div>
+  </div>
+</footer>
+
+<!-- ===========================================
+     Dify チャットボット 埋め込みコード（ここに貼付）
+     ※公開URLを取得済みの場合、Difyの「埋め込み」画面から
+       スクリプトをコピーして以下のコメントを置き換えてください
+     =========================================== -->
+
+<script>
+ window.difyChatbotConfig = {
+  token: 'v6XOmYSlnxFD8T2E',
+  inputs: {},
+  systemVariables: {},
+  userVariables: {},
+ }
+</script>
+<script
+ src="https://udify.app/embed.min.js"
+ id="v6XOmYSlnxFD8T2E"
+ defer>
+</script>
+<style>
+  #dify-chatbot-bubble-button {
+    background-color: #0EA5E9 !important;
+  }
+  #dify-chatbot-bubble-window {
+    width: 24rem !important;
+    height: 40rem !important;
+  }
+</style>
+
+</body>
+</html>
