@@ -366,12 +366,36 @@
      =========================================== -->
 
 <script>
- window.difyChatbotConfig = {
-  token: 'v6XOmYSlnxFD8T2E',
-  inputs: {},
-  systemVariables: {},
-  userVariables: {},
- }
+  /* アクセスごとに会話履歴をリセット
+     Dify が localStorage に保持する会話/トークン関連キーを削除 */
+  try {
+    Object.keys(localStorage).forEach(function (k) {
+      const lk = k.toLowerCase();
+      if (lk.indexOf('dify') !== -1 ||
+          lk.indexOf('chat') !== -1 ||
+          lk.indexOf('conversation') !== -1 ||
+          lk.indexOf('v6xomyslnxfd8t2e') !== -1) {
+        localStorage.removeItem(k);
+      }
+    });
+  } catch (e) {}
+
+  /* 念のためsessionStorageも */
+  try { sessionStorage.clear(); } catch (e) {}
+
+  window.difyChatbotConfig = {
+    token: 'v6XOmYSlnxFD8T2E',
+    inputs: {},
+    /* conversation_id を毎回ランダム生成 → 必ず新規会話で起動 */
+    systemVariables: {
+      conversation_id: (crypto && crypto.randomUUID) ? crypto.randomUUID()
+        : 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
+          const r = Math.random() * 16 | 0;
+          return (c === 'x' ? r : (r & 0x3 | 0x8)).toString(16);
+        }),
+    },
+    userVariables: {},
+  };
 </script>
 <script
  src="https://udify.app/embed.min.js"
@@ -396,7 +420,7 @@
         const r = iframe.getBoundingClientRect();
         blocker.style.display = 'block';
         blocker.style.top = r.top + 'px';
-        blocker.style.left = (r.right - 56) + 'px';
+        blocker.style.left = (r.right - 100) + 'px';
       }
 
       new MutationObserver(update).observe(iframe, { attributes: true, attributeFilter: ['style'] });
@@ -465,11 +489,12 @@
   }
 
   /* スマホで拡大ボタンを視覚的にも完全カバー
-     iframe ヘッダーの青系グラデに近い色で塗りつぶし */
+     iframe ヘッダーの青系グラデに近い色で塗りつぶし
+     幅を広めに取って expand ボタンの位置ズレに耐える */
   #dify-expand-blocker {
     position: fixed;
-    width: 56px;
-    height: 56px;
+    width: 100px;
+    height: 60px;
     z-index: 2147483646;
     background: linear-gradient(135deg, #5B8DEF 0%, #3F6BE0 100%);
     display: none;
